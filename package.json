@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/drabkirn/botja/issues"
   },
-  "homepage": "https://github.com/drabkirn/botja#readme"
+  "homepage": "https://github.com/drabkirn/botja#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0"
+  }
 }
