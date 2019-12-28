@@ -1,6 +1,7 @@
 let helpModule = require("./invocations/help");
 let jokeModule = require("./invocations/joke");
 let quoteModule = require("./invocations/quote");
+let weatherModule = require("./invocations/weather");
 
 module.exports = {
   processCommand: processCommandFn
@@ -31,7 +32,23 @@ function processCommandFn(receivedMessage) {
     quoteModule.quoteCommand(receivedMessage);
   }
 
+  else if(primaryCommand == "weather") {
+    if(requireArgumentsToWork(primaryCommand, allArguments, receivedMessage)){
+      weatherModule.weatherCommand(allArguments, receivedMessage);
+    }
+  }
+
   else{
     receivedMessage.channel.send("Unknown command. Try `$help` to see all commands!");
   }
 };
+
+
+// Some commands require some arguments or won't work as expected
+function requireArgumentsToWork(primaryCommand, allArguments, receivedMessage){
+  if(allArguments.length == 0){
+    receivedMessage.channel.send(`You didn't specify arguments properly. Please type \`$help ${primaryCommand}\` to see list of available and required arguments for this command.`);
+    return false;
+  }
+  else return true;
+}

@@ -11,7 +11,9 @@ function helpCommandFn(allArguments, receivedMessage){
 
       "`$quote` - Tells you a random quote from Drabkirn. \n\n" +
 
-      "`$help [topic]` - To get more info on specific topic. Ex: `$help movies`"
+      "`$weather` - Gives you weather info from over 2 Lakh cities. \n\n" +
+
+      "`$help [topic]` - To get more info on specific topic. Ex: `$help movies` or `$help quote`"
     );
   } else {
     let topicArgument = allArguments[0].toLowerCase();
@@ -34,7 +36,19 @@ function helpCommandFn(allArguments, receivedMessage){
         "**Examples:**  \n" +
         "\t `$quote` -  Shows one random quote\n"
       );
-    }else {
+    } else if(topicArgument == "weather"){
+      receivedMessage.channel.send(
+        "**Command:**  `$weather` \n" + 
+        "**Description:**  Gives you weather info from over 2 Lakh cities. \n" +
+        "**Arguments:**  one REQUIRED argument: \n" +
+        "\t `[city name]`:  The city name whose weather info you need. If the city name is not found, it defaults to *Hyderabad* \n" +
+        "**Examples:**  \n" +
+        "\t `$weather london` -  Gives current weather info of London.\n" +
+        "\t `$weather 123` -  City not found or is not string. So we'll default it to Hyderabad.\n" +
+        "\t `$weather abc` -  We'll throw an error since no city name is not found.\n" + 
+        "\t `$weather` -  We'll throw an error since no city name is mentioned.\n"
+      );
+    } else {
       receivedMessage.channel.send("You've entered wrong help topic. Please try `$help` or `$help movies` or `$help quote` to know more!");
     }
   }

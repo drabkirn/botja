@@ -28,7 +28,7 @@ function jokeCommandFn(allArguments, receivedMessage){
       .catch((err) => {
         receivedMessage.channel.send("Exception: Sorry, there's something wrong from our end, If the problem persists, please contact us at drabkirn@cdadityang.xyz");
       });
-  }else if(allArguments.length == 1) {
+  } else if(allArguments.length == 1) {
     let numberOfJokes = parseInt(allArguments[0]);
     if(!numberOfJokes || numberOfJokes < 1 || numberOfJokes > 5) {
       receivedMessage.channel.send(
