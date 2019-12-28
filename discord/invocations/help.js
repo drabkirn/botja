@@ -3,8 +3,10 @@ module.exports = {
 };
 
 // The helpCommand function which shows all the commands available
-function helpCommandFn(allArguments, receivedMessage){
+function helpCommandFn(allArguments, receivedMessage, appInsightsClient){
   if(allArguments.length == 0) {
+    appInsightsClient.trackEvent({name: "botja-discord", properties: { desc: "$help called", req: "correct", args: "none" }});
+
     receivedMessage.channel.send(
       "Here are the list of commands: \n\n" +
       "`$joke` - Gives you a random small and tiny joke. \n\n" +
@@ -16,6 +18,7 @@ function helpCommandFn(allArguments, receivedMessage){
   }
   else {
     let topicArgument = allArguments[0].toLowerCase();
+
     if(topicArgument == "joke") {
       receivedMessage.channel.send(
         "**Command:**  `$joke` \n" + 
@@ -67,6 +70,15 @@ function helpCommandFn(allArguments, receivedMessage){
     }
     else {
       receivedMessage.channel.send("You've entered wrong help topic. Please try `$help` or `$help movies` or `$help quote` to know more!");
+    }
+
+    // Track corrent event if topic of Argument is included or else wrong request
+    let availableCommands = ["joke", "quote", "weather", "movie"]
+    if(availableCommands.includes(topicArgument)) {
+      appInsightsClient.trackEvent({name: "botja-discord", properties: { desc: "$help called", req: "correct", args: topicArgument }});
+    }
+    else {
+      appInsightsClient.trackEvent({name: "botja-discord", properties: { desc: "$help called", req: "wrong", args: allArguments }});
     }
   }
 };

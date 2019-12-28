@@ -2,6 +2,10 @@
 require('dotenv').config({ path: '.env' });
 if(process.env.APP_ENVIRONMENT == "production") require('dotenv').config({ path: '.env_production' });
 
+// Application Insights Init
+let appInsights = require('applicationinsights');
+appInsights.setup(process.env.APP_INSIGHTS_INSTRUMENTATION_KEY).start();
+let appInsightsClient = appInsights.defaultClient;
 
 // Initialize Discord JS
 const Discord = require("discord.js");
@@ -21,6 +25,8 @@ client.on('ready', () => {
   console.log("Connected as " + client.user.tag);
   
   client.user.setActivity(`with ${client.users.size} users`);
+
+  appInsightsClient.trackEvent({name: "botja-discord", properties: { desc: "client connected", req: "correct", args: client.user.tag }});
 });
 
 
@@ -62,7 +68,7 @@ client.on('message', (receivedMessage) => {
 
   // Start our process here
   if(receivedMessage.content.startsWith("$")) {
-    processCommandModule.processCommand(receivedMessage);
+    processCommandModule.processCommand(receivedMessage, appInsightsClient);
   }
   else{
     receivedMessage.channel.send("Hello There! And Sorry, I didn't get what you want. You can anytime send `$help` to see list of available commands.");

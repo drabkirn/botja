@@ -5,7 +5,7 @@ module.exports = {
 };
 
 // Weather Command
-function weatherCommandFn(allArguments, receivedMessage) {
+function weatherCommandFn(allArguments, receivedMessage, appInsightsClient) {
   let cityName;
   if(isNaN(Number(allArguments[0]))) {
     cityName = allArguments[0];
@@ -13,6 +13,8 @@ function weatherCommandFn(allArguments, receivedMessage) {
   else {
     cityName = "Hyderabad";
     receivedMessage.channel.send("There was some error in your provided City Name. Defaulting the city name to **Hyderabad**!");
+
+    appInsightsClient.trackEvent({name: "botja-discord", properties: { desc: "$weather called", req: "wrong", args: allArguments }});
   }
 
   fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&APPID=${process.env.OPEN_WEATHER_MAP_API}&units=metric`)
@@ -56,12 +58,26 @@ function weatherCommandFn(allArguments, receivedMessage) {
           
           "**Information last updated:**  " + apiInfoUpdated + " IST"
         );
+
+        appInsightsClient.trackEvent({name: "botja-discord", properties: { desc: "$weather called", req: "correct", args: cityName }});
       }
       else {
         receivedMessage.channel.send(`Error: Either the city name is wrong or maybe some other error. If the problem persists, please contact us at drabkirn@cdadityang.xyz. Error message from API:\n${body.cod}`);
+
+        appInsightsClient.trackTrace({
+          message: "API Error",
+          severity: 3,
+          properties: { name: "botja-discord", invocation: "$weather", err: body }
+        });
       }
     })
     .catch((err) => {
       receivedMessage.channel.send("Exception: Sorry, there's something wrong from our end, If the problem persists, please contact us at drabkirn@cdadityang.xyz");
+
+      appInsightsClient.trackTrace({
+        message: "Network Error",
+        severity: 3,
+        properties: { name: "botja-discord", invocation: "$weather", err: err }
+      });
     });
 };

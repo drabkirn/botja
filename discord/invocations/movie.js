@@ -6,7 +6,7 @@ module.exports = {
 };
 
 // Movie Command
-function movieCommandFn(allArguments, receivedMessage) {
+function movieCommandFn(allArguments, receivedMessage, appInsightsClient) {
   let numberOfMovies;
   if(!isNaN(parseInt(allArguments[0]))) numberOfMovies = allArguments[0];
   else numberOfMovies = 1;
@@ -18,6 +18,8 @@ function movieCommandFn(allArguments, receivedMessage) {
   let yearOfMovie;
   if(!isNaN(parseInt(allArguments[2]))) yearOfMovie = allArguments[2];
   else yearOfMovie = 2017;
+
+  appInsightsClient.trackEvent({name: "botja-discord", properties: { desc: "$movie called", req: "correct", args: { numberOfMoviesCalled: numberOfMovies, genreOfMovieCalled: genreOfMovie, yearOfMovieCalled: yearOfMovie } }});
 
   const genres = {
     action: {
@@ -126,6 +128,12 @@ function movieCommandFn(allArguments, receivedMessage) {
       })
       .catch((err) => {
         receivedMessage.channel.send("Exception: Sorry, there's something wrong from our end, If the problem persists, please contact us at drabkirn@cdadityang.xyz");
+
+        appInsightsClient.trackTrace({
+          message: "Network Error",
+          severity: 3,
+          properties: { name: "botja-discord", invocation: "$movie", err: err }
+        });
       });
   };
   getMovie();
