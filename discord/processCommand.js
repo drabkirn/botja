@@ -1,11 +1,12 @@
 let helpModule = require("./invocations/help");
 let jokeModule = require("./invocations/joke");
+let quoteModule = require("./invocations/quote");
 
 module.exports = {
   processCommand: processCommandFn
 };
 
-function processCommandFn(receivedMessage){
+function processCommandFn(receivedMessage) {
   // removes $ from command - 1st char
   let fullCommand = receivedMessage.content.substr(1);
   
@@ -18,12 +19,16 @@ function processCommandFn(receivedMessage){
   // All the rest of the arguments come like this.
   let allArguments = splitCommand.slice(1);
   
-  if(primaryCommand === "help"){
+  if(primaryCommand === "help") {
     helpModule.helpCommand(allArguments, receivedMessage);
   }
 
-  else if(primaryCommand == "joke"){
+  else if(primaryCommand == "joke") {
     jokeModule.jokeCommand(allArguments, receivedMessage);
+  }
+
+  else if(primaryCommand == "quote") {
+    quoteModule.quoteCommand(receivedMessage);
   }
 
   else{

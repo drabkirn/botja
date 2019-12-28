@@ -6,14 +6,16 @@ module.exports = {
 function helpCommandFn(allArguments, receivedMessage){
   if(allArguments.length == 0){
     receivedMessage.channel.send(
-      "Here are the list of commands: \n\n" + 
+      "Here are the list of commands: \n\n" +
       "`$joke` - Tells you a random small and tiny joke. \n\n" +
+
+      "`$quote` - Tells you a random quote from Drabkirn. \n\n" +
+
       "`$help [topic]` - To get more info on specific topic. Ex: `$help movies`"
     );
   } else {
     let topicArgument = allArguments[0].toLowerCase();
     if(topicArgument == "joke"){
-      
       receivedMessage.channel.send(
         "**Command:**  `$joke` \n" + 
         "**Description:**  Tells you a random small and tiny joke. \n" +
@@ -24,7 +26,15 @@ function helpCommandFn(allArguments, receivedMessage){
         "\t `$joke 3` -  Shows 3 jokes\n" + 
         "\t `$joke 100` -  Shows 5 jokes. We can show max 5 jokes.\n"
       );
-    } else {
+    } else if(topicArgument == "quote") {
+      receivedMessage.channel.send(
+        "**Command:**  `$quote` \n" + 
+        "**Description:**  Tells you a random quote from Drabkirn. \n" +
+        "**Arguments:**  NONE. If you pass arguments like `$quote 2` or `$quote 2 3`, they will be ignored. \n" +
+        "**Examples:**  \n" +
+        "\t `$quote` -  Shows one random quote\n"
+      );
+    }else {
       receivedMessage.channel.send("You've entered wrong help topic. Please try `$help` or `$help movies` or `$help quote` to know more!");
     }
   }

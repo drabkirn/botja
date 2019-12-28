@@ -7,7 +7,7 @@ module.exports = {
 // Joke Command
 function jokeCommandFn(allArguments, receivedMessage){
   let myHeaders = {
-    'User-Agent' : 'Drabkirn Botja - (https://drabkirn.cdadityang.xyz) - drabkirn@cdadityang.xyz',
+    'User-Agent' : 'Drabkirn Botja - Discord - (https://drabkirn.cdadityang.xyz) - drabkirn@cdadityang.xyz',
     'Accept' : 'application/json'
   };
 
