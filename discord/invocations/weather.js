@@ -4,8 +4,8 @@ module.exports = {
   weatherCommand: weatherCommandFn
 };
 
-// Joke Command
-function weatherCommandFn(allArguments, receivedMessage){
+// Weather Command
+function weatherCommandFn(allArguments, receivedMessage) {
   let cityName;
   if(isNaN(Number(allArguments[0]))) {
     cityName = allArguments[0];
@@ -15,10 +15,10 @@ function weatherCommandFn(allArguments, receivedMessage){
     receivedMessage.channel.send("There was some error in your provided City Name. Defaulting the city name to **Hyderabad**!");
   }
 
-  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&APPID=${process.env.DISCORD_OPEN_WEATHER_MAP_API}&units=metric`)
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&APPID=${process.env.OPEN_WEATHER_MAP_API}&units=metric`)
     .then((res) => res.json())
     .then((body) => {
-      if(body.cod == "200"){
+      if(body.cod == "200") {
         let weatherMain = body.list[0].weather[0].main;
         let weatherDescription = body.list[0].weather[0].description;
         
@@ -57,7 +57,7 @@ function weatherCommandFn(allArguments, receivedMessage){
           "**Information last updated:**  " + apiInfoUpdated + " IST"
         );
       }
-      else{
+      else {
         receivedMessage.channel.send(`Error: Either the city name is wrong or maybe some other error. If the problem persists, please contact us at drabkirn@cdadityang.xyz. Error message from API:\n${body.cod}`);
       }
     })

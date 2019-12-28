@@ -4,7 +4,7 @@ module.exports = {
   quoteCommand: quoteCommandFn
 };
 
-function quoteCommandFn(receivedMessage){
+function quoteCommandFn(receivedMessage) {
   const myHeaders = {
     'User-Agent': 'Drabkirn Botja - Discord - (https://drabkirn.cdadityang.xyz) - drabkirn@cdadityang.xyz',
     'Content-Type': 'application/json',
@@ -19,7 +19,8 @@ function quoteCommandFn(receivedMessage){
         receivedMessage.channel.send(
           `Here is your Drabkirn Quote:\n> ${body.data[randomNum].content}`
         );  
-      } else {
+      }
+      else {
         receivedMessage.channel.send(
           `Error: It looks like API is not working properly. If the problem persists, please contact us at drabkirn@cdadityang.xyz`
         );

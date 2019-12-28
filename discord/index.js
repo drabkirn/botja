@@ -28,7 +28,7 @@ client.on('ready', () => {
 // Respond to incoming messages:
 client.on('message', (receivedMessage) => {
   // Bot shouldn't reply to itself
-  if(receivedMessage.author === client.user){
+  if(receivedMessage.author === client.user) {
     return;
   }
 
@@ -36,32 +36,32 @@ client.on('message', (receivedMessage) => {
   // Run this when this bot is mentioned in any channel, don't run if mentioned in DM
   let isBotMentionedOnChannels = false;
   receivedMessage.mentions.users.forEach((user) => {
-    if(user.id === process.env.DISCORD_BOT_ID && receivedMessage.channel.type !== "dm"){
+    if(user.id === process.env.DISCORD_BOT_ID && receivedMessage.channel.type !== "dm") {
       isBotMentionedOnChannels = true;
     }
   });
 
-  if(isBotMentionedOnChannels){
+  if(isBotMentionedOnChannels) {
     receivedMessage.channel.send(`Yay, I've been mentioned here. Hi ${receivedMessage.author}, Since this is a public channel and I can't reply you here, why don't you chat with me ${client.user} for better experience?`);
     return;
   }
 
 
   // Run this when a message arrives in #botja channel
-  if(receivedMessage.channel.id === process.env.DISCORD_BOT_BOTJA_CHANNEL_ID){
+  if(receivedMessage.channel.id === process.env.DISCORD_BOT_BOTJA_CHANNEL_ID) {
     receivedMessage.channel.send(`Hi ${receivedMessage.author}, Since this is a public channel and I can't reply you here, why don't you chat with me ${client.user} for better experience?`);
     return;
   }
 
 
   // Don't reply or do anything when some other people are talking on other channels, except on DM
-  if(receivedMessage.channel.id !== process.env.DISCORD_BOT_BOTJA_CHANNEL_ID && receivedMessage.channel.type !== "dm"){
+  if(receivedMessage.channel.id !== process.env.DISCORD_BOT_BOTJA_CHANNEL_ID && receivedMessage.channel.type !== "dm") {
     return;
   }
 
 
   // Start our process here
-  if(receivedMessage.content.startsWith("$")){
+  if(receivedMessage.content.startsWith("$")) {
     processCommandModule.processCommand(receivedMessage);
   }
   else{
