@@ -13,6 +13,7 @@ function helpCommandFn(allArguments, receivedMessage, appInsightsClient){
       "`$quote` - Gives you a random quote from Drabkirn. \n\n" +
       "`$weather` - Gives you weather info from over 2 Lakh cities. \n\n" +
       "`$movie` - Gives you movies suggestions based on your interests. \n\n" +
+      "`$calc` - Does simple maths operations like addition, substraction, multiplication, division and mod. \n\n" +
       "`$aboutme` - I'll tell you a little about myself. \n\n" +
       "`$help [topic]` - To get more info on specific topic. Ex: `$help movie` or `$help quote`"
     );
@@ -69,6 +70,21 @@ function helpCommandFn(allArguments, receivedMessage, appInsightsClient){
         "\t `$movies 1 horror` -  Year argument is missing, We'll throw an error!\n"
       );
     }
+    else if(topicArgument == "calc") {
+      receivedMessage.channel.send(
+        "**Command:**  `$calc` \n" + 
+        "**Description:**  Does simple maths operations like addition, substraction, multiplication, division and mod. \n" +
+        "**Arguments:**  two REQUIRED arguments: \n" +
+        "\t `[operation]`:  Can be `add`, `sub`, `mul`, `div`, `mod` .\n" +
+        "\t `[numbers]`:  Minimum of 2 numbers and maximum of 50 numbers to be provided separated with a `space` to perform the operation .\n" +
+        "**Examples:**  \n" +
+        "\t `$calc add 1 2 3` - Adds `1 + 2 + 3` and gives the result `6`.\n" +
+        "\t `$calc sub 20 3 5` - Substract `20 - 3 - 5` and gives the result `12`.\n" +
+        "\t `$calc mul 3 4 5 6` - Multiples `3 * 4 * 5 * 6` and gives result `360`.\n" + 
+        "\t `$calc add 1` - Bad/Wrong arguments - We'll throw an error!\n" +
+        "\t `$calc hello` -  Wrong operation called - We'll throw an error!"
+      );
+    }
     else if(topicArgument == "aboutme") {
       receivedMessage.channel.send(
         "**Command:**  `$aboutme` \n" + 
@@ -83,7 +99,7 @@ function helpCommandFn(allArguments, receivedMessage, appInsightsClient){
     }
 
     // Track corrent event if topic of Argument is included or else wrong request
-    let availableCommands = ["joke", "quote", "weather", "movie", "aboutme"]
+    let availableCommands = ["joke", "quote", "weather", "movie", "aboutme", "calc"]
     if(availableCommands.includes(topicArgument)) {
       appInsightsClient.trackEvent({name: "botja-discord", properties: { desc: "$help called", req: "correct", args: topicArgument }});
     }

@@ -3,6 +3,7 @@ let jokeModule = require("./invocations/joke");
 let quoteModule = require("./invocations/quote");
 let weatherModule = require("./invocations/weather");
 let movieModule = require("./invocations/movie");
+let calcModule = require("./invocations/calc");
 let aboutmeModule = require("./invocations/aboutme");
 
 module.exports = {
@@ -41,6 +42,11 @@ function processCommandFn(receivedMessage, appInsightsClient) {
       movieModule.movieCommand(allArguments, receivedMessage, appInsightsClient);
     }
   }
+  else if(primaryCommand == "calc") {
+    if(calcRequireArgumentsToWork(primaryCommand, allArguments, receivedMessage, appInsightsClient)){
+      calcModule.calcCommand(allArguments, receivedMessage, appInsightsClient);
+    }
+  }
   else if(primaryCommand == "aboutme") {
     aboutmeModule.aboutmeCommand(receivedMessage, appInsightsClient);
   }
@@ -64,6 +70,17 @@ function requireArgumentsToWork(primaryCommand, allArguments, receivedMessage, a
 
 function movieRequireArgumentsToWork(primaryCommand, allArguments, receivedMessage, appInsightsClient) {
   if(allArguments.length != 3){
+    receivedMessage.channel.send(`You didn't specify arguments properly. Please type \`$help ${primaryCommand}\` to see list of available and required arguments for this command.`);
+
+    appInsightsClient.trackEvent({name: "botja-discord", properties: { desc: `$${primaryCommand} called`, req: "wrong", args: allArguments }});
+
+    return false;
+  }
+  else return true;
+};
+
+function calcRequireArgumentsToWork(primaryCommand, allArguments, receivedMessage, appInsightsClient) {
+  if(allArguments.length < 3){
     receivedMessage.channel.send(`You didn't specify arguments properly. Please type \`$help ${primaryCommand}\` to see list of available and required arguments for this command.`);
 
     appInsightsClient.trackEvent({name: "botja-discord", properties: { desc: `$${primaryCommand} called`, req: "wrong", args: allArguments }});
