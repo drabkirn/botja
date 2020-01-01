@@ -3,6 +3,7 @@ let jokeModule = require("./invocations/joke");
 let quoteModule = require("./invocations/quote");
 let weatherModule = require("./invocations/weather");
 let movieModule = require("./invocations/movie");
+let aboutmeModule = require("./invocations/aboutme");
 
 module.exports = {
   processCommand: processCommandFn
@@ -39,6 +40,9 @@ function processCommandFn(receivedMessage, appInsightsClient) {
     if(movieRequireArgumentsToWork(primaryCommand, allArguments, receivedMessage, appInsightsClient)){
       movieModule.movieCommand(allArguments, receivedMessage, appInsightsClient);
     }
+  }
+  else if(primaryCommand == "aboutme") {
+    aboutmeModule.aboutmeCommand(receivedMessage, appInsightsClient);
   }
   else {
     receivedMessage.channel.send("Unknown command. Try `$help` to see all commands!");

@@ -8,11 +8,12 @@ function helpCommandFn(allArguments, receivedMessage, appInsightsClient){
     appInsightsClient.trackEvent({name: "botja-discord", properties: { desc: "$help called", req: "correct", args: "none" }});
 
     receivedMessage.channel.send(
-      "Here are the list of commands: \n\n" +
+      "Here are the list of commands(my capabilities): \n\n" +
       "`$joke` - Gives you a random small and tiny joke. \n\n" +
       "`$quote` - Gives you a random quote from Drabkirn. \n\n" +
       "`$weather` - Gives you weather info from over 2 Lakh cities. \n\n" +
       "`$movie` - Gives you movies suggestions based on your interests. \n\n" +
+      "`$aboutme` - I'll tell you a little about myself. \n\n" +
       "`$help [topic]` - To get more info on specific topic. Ex: `$help movie` or `$help quote`"
     );
   }
@@ -68,12 +69,21 @@ function helpCommandFn(allArguments, receivedMessage, appInsightsClient){
         "\t `$movies 1 horror` -  Year argument is missing, We'll throw an error!\n"
       );
     }
+    else if(topicArgument == "aboutme") {
+      receivedMessage.channel.send(
+        "**Command:**  `$aboutme` \n" + 
+        "**Description:**  I'll tell you a little about myself. \n" +
+        "**Arguments:**  NONE. If you pass arguments like `$aboutme 2` or `$aboutme abc`, they will be ignored. \n" +
+        "**Examples:**  \n" +
+        "\t `$aboutme` -  I'll tell you a little description about myself.\n"
+      );
+    }
     else {
       receivedMessage.channel.send("You've entered wrong help topic. Please try `$help` or `$help movies` or `$help quote` to know more!");
     }
 
     // Track corrent event if topic of Argument is included or else wrong request
-    let availableCommands = ["joke", "quote", "weather", "movie"]
+    let availableCommands = ["joke", "quote", "weather", "movie", "aboutme"]
     if(availableCommands.includes(topicArgument)) {
       appInsightsClient.trackEvent({name: "botja-discord", properties: { desc: "$help called", req: "correct", args: topicArgument }});
     }
