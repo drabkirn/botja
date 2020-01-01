@@ -1,10 +1,10 @@
 {
   "name": "botja",
   "version": "1.0.0",
-  "description": "The ultimate chatbot from Drabkirn, gets everything done.",
+  "description": "A chatbot that can do most of the things to make your life easier and faster.",
   "main": "index.js",
   "scripts": {
-    "test": "echo 'No Test Specified'"
+    "discord": "node discord/index.js"
   },
   "repository": {
     "type": "git",

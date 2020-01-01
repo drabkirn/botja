@@ -4,19 +4,20 @@
 
 # Drabkirn Botja
 
-> The ultimate chatbot from Drabkirn, gets everything done.
+> A chatbot that can do most of the things to make your life easier and faster.
 
 <!-- Add languages, CI/CD, main frameworks used from shields.io. Example -->
+[![Discord.js](https://img.shields.io/badge/discord.js-v11.5.1-blueviolet.svg)](https://discord.js.org/#/)
+[![Application Insights](https://img.shields.io/badge/applicationinsights-v1.6.0-important.svg)](https://www.npmjs.com/package/applicationinsights)
 [![Issues](https://img.shields.io/github/issues/drabkirn/botja.svg)](https://github.com/drabkirn/botja/issues)
 [![Issues closed](https://img.shields.io/github/issues-closed/drabkirn/botja.svg)](https://github.com/drabkirn/botja/issues)
 [![Pulls](https://img.shields.io/github/issues-pr/drabkirn/botja.svg)](https://github.com/drabkirn/botja/pulls)
 [![Pulls](https://img.shields.io/github/issues-pr-closed/drabkirn/botja.svg)](https://github.com/drabkirn/botja/pulls)
 [![License](https://img.shields.io/github/license/drabkirn/botja.svg)](https://choosealicense.com/licenses/agpl-3.0/)
 
-<!-- TODO: Full Description of Project goes here -->
+I can tell you quotes, entertain you with jokes, suggest you movies, make calculations for you, provide AI services, and much more coming down the line.
 
-<!-- TODO: Demo or website here -->
-<!-- **[Visit Website here](https://go.brinkirn.xyz/go)** -->
+**[Join the server to test it out](https://go.cdadityang.xyz/discord)**
 
 -----
 -----
@@ -44,7 +45,9 @@ Please check [this Code of Conduct guide](https://github.com/drabkirn/botja/blob
 
 ## Connect:
 Need any help? Have any Questions? Or just say us hi!
+
 1. [Drabkirn Website](https://go.cdadityang.xyz/drab)
 2. [Our Blog](https://go.cdadityang.xyz/blog)
-3. [Twitter](https://go.cdadityang.xyz/DtwtK)
-4. [Instagram](https://go.cdadityang.xyz/DinsK)
+3. [Discord Server](https://go.cdadityang.xyz/discord)
+4. [Twitter](https://go.cdadityang.xyz/DtwtK)
+5. [Instagram](https://go.cdadityang.xyz/DinsK)
