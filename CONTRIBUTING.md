@@ -1,19 +1,19 @@
-# Contributing to ProjectName
+# Contributing to Drabkirn Botja
 
 ## Before Submitting an Issue
 Check that [our issue database](https://github.com/drabkirn/botja/issues)
-doesn't already include that problem or suggestion before submitting an issue.
+doesn't already include your problem or suggestion before submitting your issue.
 If you find a match, you can use the "subscribe" button to get notified on
-updates. Do **not** leave random "+1" or "I have this too" comments, as they
-only clutter the discussion, and don't help resolving it. However, if you
+updates. Do **NOT** leave random "+1" or "I have this too" comments, as they
+only clutter the discussion, and don't help to resolve it. However, if you
 have ways to reproduce the issue or have additional information that may help
-resolving the issue, please leave a comment.
+to resolve the issue, please leave a comment.
 
 ## Writing Good Bug Reports and Feature Requests
-Please file a single issue per problem and feature request. Do not file combo issues.
+Please file a single issue per problem and feature request. Do not submit combo issues.
 
-The more information you can provide, the more likley someone will be successful reproducing the issue and finding a fix. Therefore:
-* Provide reproducibule steps, what the result of the steps was, and what you would have expected.
+The more information you can provide, the more likely someone will be successful in reproducing the issue and finding a fix. Therefore:
+* Provide reproducible steps, what the result of the steps was, and what you would have expected.
 * A detailed description of the behavior that you expect.
 * Animated GIFs are a tremendous help.
 * Version information of your ruby and rails version.
@@ -24,7 +24,7 @@ The more information you can provide, the more likley someone will be successful
 
 2. Install the app on your local machine. You need to [Fork](https://help.github.com/articles/fork-a-repo/) this app and then clone it on your local machine. See the Installation section of [README.md](https://github.com/drabkirn/botja/blob/master/README.md) on how to do the installation.
 
-3. Set the upstream remote so you can keep your copy of the app synced with the original. To do that go to your terminal and cd into your cloned odin project app directory. Then use one of the following commands:
+3. Set the upstream remote so you can keep your copy of the app synced with the original. To do that, go to your terminal and cd into your cloned Drabkirn Botja app directory. Then use one of the following commands:
     * If you have ssh set up with Git
       ```bash
       $ git remote add upstream https://github.com/drabkirn/botja.git
@@ -34,7 +34,7 @@ The more information you can provide, the more likley someone will be successful
       git remote add upstream git@github.com:drabkirn/botja.git
       ```
 
-4. Before you start working on your issue create a branch and name it like the following examples:
+4. Before you start working on your issue, create a branch, and name it as the following examples:
     * If its a new feature:
       ```bash
       $ git checkout -b feature/new-feature-name
@@ -44,16 +44,15 @@ The more information you can provide, the more likley someone will be successful
       git checkout -b fix/fixed-bug-name
       ```
 
-5. When you have finished and are ready to submit a Pull request:
+5. When you have finished and are ready to submit a Pull Request:
     * Push your branch to your fork
       ```bash
       $ git push origin <your branch name here>
       ```
-    * Go to your fork on Github after you have pushed up your branch. A new button should be visible near the top of the page. It will allow you to create a pull request to the original Odin Project Repo.
+    * Go to your fork on Github after you have pushed up your branch. A new button should be visible near the top of the page. It will allow you to create a pull request to the original Drabkirn Botja repo.
     * You'll see a `PULL_REQUEST_TEMPLATE` - Try to complete this in your own words.
     * Please Link to the issue your pull request resolves in the body of your pull request.
 
+6. **Important:** After you submit your pull request, Drabkirn requires that every contributor sign a Drabkirn Contributor License Agreement (CLA) to a Drabkirn open source project. This Agreement is effective upon your acknowledgment via the CLA Assistant tool. You can read and sign this Agreement at [https://cla-assistant.io/drabkirn/botja](https://cla-assistant.io/drabkirn/botja) or follow the link in your pull request pending checks list. Until you agree by signing this Agreement, Drabkirn will not merge your pull request.
 
------
-
-This contributing Guide was built from various sources: [Codeenvy](https://github.com/codenvy/codenvy/blob/master/CONTRIBUTING.md) | [The Odin Project](https://github.com/TheOdinProject/theodinproject/wiki/Contributing-Guide)
+We're looking forward to accepting your contributions and make this world a better place. Please keep them coming. ❤💖

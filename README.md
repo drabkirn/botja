@@ -14,6 +14,7 @@
 [![Pulls](https://img.shields.io/github/issues-pr/drabkirn/botja.svg)](https://github.com/drabkirn/botja/pulls)
 [![Pulls](https://img.shields.io/github/issues-pr-closed/drabkirn/botja.svg)](https://github.com/drabkirn/botja/pulls)
 [![License](https://img.shields.io/github/license/drabkirn/botja.svg)](https://choosealicense.com/licenses/agpl-3.0/)
+[![CLA assistant](https://cla-assistant.io/readme/badge/drabkirn/botja)](https://cla-assistant.io/drabkirn/botja)
 
 I can tell you quotes, entertain you with jokes, suggest you movies, make calculations for you, provide AI services, and much more coming down the line.
 
