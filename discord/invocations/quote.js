@@ -8,10 +8,11 @@ function quoteCommandFn(receivedMessage, appInsightsClient) {
   const myHeaders = {
     'User-Agent': 'Drabkirn Botja - Discord - (https://drabkirn.cdadityang.xyz) - drabkirn@cdadityang.xyz',
     'Content-Type': 'application/json',
-    'Accept': 'application/drabkirn.quotes.v1'
+    'Accept': 'application/drabkirn.web.v1',
+    'QuotesToken': `${ process.env.QUOTES_API }`
   };
   
-  fetch('https://drabkirn.quotes.cdadityang.xyz/quotes', { method: 'GET', headers: myHeaders })
+  fetch('https://drabkirn.cdadityang.xyz/quotes', { method: 'GET', headers: myHeaders })
     .then((res) => res.json())
     .then((body) => {
       if(body.status == 200) {
