@@ -1,4 +1,5 @@
 const fetch = require("node-fetch");
+const quotesURL = `https://drabkirn.cdadityang.xyz/quotes`;
 
 module.exports = {
   quoteCommand: quoteCommandFn
@@ -12,7 +13,7 @@ function quoteCommandFn(receivedMessage, appInsightsClient) {
     'QuotesToken': `${ process.env.QUOTES_API }`
   };
   
-  fetch('https://drabkirn.cdadityang.xyz/quotes', { method: 'GET', headers: myHeaders })
+  fetch(quotesURL, { method: 'GET', headers: myHeaders })
     .then((res) => res.json())
     .then((body) => {
       if(body.status == 200) {

@@ -12,6 +12,23 @@ applicationinsights@^1.6.0:
     diagnostic-channel "0.2.0"
     diagnostic-channel-publishers "^0.3.3"
 
+ask-sdk-core@^2.10.1:
+  version "2.10.1"
+  resolved "https://registry.yarnpkg.com/ask-sdk-core/-/ask-sdk-core-2.10.1.tgz#da9dc1b1e3b23c4e9cb94a088749e70e2ad82698"
+  integrity sha512-C6NaCccoJQaMJYoRlFvS4Yzk3pPTjZF3qAOEyYPZVqOkscZSz0PW25jPhLDwRYp2ynnQbqK9cd6N1APH0Xru7w==
+  dependencies:
+    ask-sdk-runtime "^2.10.1"
+
+ask-sdk-model@^1.34.1:
+  version "1.34.1"
+  resolved "https://registry.yarnpkg.com/ask-sdk-model/-/ask-sdk-model-1.34.1.tgz#d3b957cb2368f27375fd3781ece4d8d6c6df7bac"
+  integrity sha512-bnKzRczfmk7uYHtPNFxQbngwUCB7wnL/bAgOKXYehDKiRX3kpoIoZPzpCadSPp9OcyN7Iq6CW1zkADW5IT6CLA==
+
+ask-sdk-runtime@^2.10.1:
+  version "2.10.1"
+  resolved "https://registry.yarnpkg.com/ask-sdk-runtime/-/ask-sdk-runtime-2.10.1.tgz#72b8a157c9f5052f43f7f592772cbb1bebd4ce6f"
+  integrity sha512-BFEs0UFGvjpKmbYSVhcFa1Oh+eyfCkWULanV+mWTxHTJ7aeB+UsZ8TvkDWZOnHsn0shAFtvkmun4tjx8eOR7uA==
+
 async-hook-jl@^1.7.6:
   version "1.7.6"
   resolved "https://registry.yarnpkg.com/async-hook-jl/-/async-hook-jl-1.7.6.tgz#4fd25c2f864dbaf279c610d73bf97b1b28595e68"

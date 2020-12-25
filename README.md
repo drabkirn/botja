@@ -18,7 +18,8 @@
 
 I can tell you quotes, entertain you with jokes, suggest you movies, make calculations for you, provide AI services, and much more coming down the line.
 
-**[Join the server to test it out](https://go.cdadityang.xyz/discord)**
+**Checkout Botja in Action Now:**
+1. [Discord](https://go.cdadityang.xyz/discord)
 
 -----
 -----
