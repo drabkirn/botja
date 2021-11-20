@@ -20,6 +20,8 @@ I can tell you quotes, entertain you with jokes, suggest you movies, make calcul
 
 **Checkout Botja in Action Now:**
 1. [Discord](https://go.cdadityang.xyz/discord)
+2. [Alexa](https://go.cdadityang.xyz/bjalexa) - *Alexa, ask cool crave to tell me a quote*
+3. [Google Assistant](https://go.cdadityang.xyz/bjga) - *Ok Google, Ask Cool Crave to tell me a quote*
 
 -----
 -----
