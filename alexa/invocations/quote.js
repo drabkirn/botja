@@ -24,11 +24,18 @@ function quoteCommandFn(appInsightsClient) {
       
       let speechText = '';
       let errorText = 'noerror';
+
+      const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
       await fetch(quotesURL, { method: 'GET', headers: myHeaders })
         .then((response) => response.json())
         .then((body) => {
           let randomNum = Math.floor(Math.random() * body.data.length);
           speechText = body.data[randomNum].content;
+
+          sessionAttributes.lastSpeechText = speechText;
+          sessionAttributes.lastSpeechTitle = "Your Quote";
+          handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
         })
         .catch((err) => {
           appInsightsClient.trackTrace({

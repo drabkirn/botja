@@ -33,6 +33,8 @@ function movieCommandFn(appInsightsClient, action) {
         const hiRequest = handlerInput.requestEnvelope.request;
         let speechText = '';
         let errorText = 'noerror';
+
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         
         let numberOfMovies = hiRequest.intent.slots.numberOfMoviesSlot.value;
         let genreOfMovies = hiRequest.intent.slots.genreMoviesSlot.value.toLowerCase();
@@ -140,6 +142,10 @@ function movieCommandFn(appInsightsClient, action) {
             else{
               speechText = `Sure, According to your requirements I've found ${number} titles of movies you should watch: ${finalArray}`;
             }
+
+            sessionAttributes.lastSpeechText = speechText;
+            sessionAttributes.lastSpeechTitle = "Movies";
+            handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
           })
           .catch((err) => {
             appInsightsClient.trackTrace({

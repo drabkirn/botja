@@ -33,13 +33,15 @@ function weatherCommandFn(appInsightsClient, action) {
         let speechText = '';
         let errorText = 'noerror';
         let cityName = handlerInput.requestEnvelope.request.intent.slots.cityIntentSlot.value;
+
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         
         appInsightsClient.trackEvent({name: "botja-alexa", properties: { desc: "WeatherIntent called", req: "correct", args: cityName }});
         
         let myHeaders = {
           'Content-Type': 'application/json'
         };
-        
+
         await fetch(`${weatherURL}?q=${cityName}&APPID=${process.env.OPEN_WEATHER_MAP_API}&units=metric`, { method: 'GET', headers: myHeaders })
           .then((response) => response.json())
           .then((body) => {
@@ -62,6 +64,10 @@ function weatherCommandFn(appInsightsClient, action) {
               let apiInfoUpdated = body.list[0].dt_txt;
               
               speechText = `Here's your weather of ${apiCityName}, ${apiCountry} with population ${apiPopulation}. You can expect ${weatherDescription}. Temperature is ${temperature} degree celsius. Cloudiness is ${cloudiness}%. Atmospheric Pressure is ${atmPressure} hPa. Humidity is ${humidity}%. Wind Speed is ${windSpeed} m/s. Wind Direction is aroung ${windDirection} degrees. Information was last updated at ${apiInfoUpdated}.`;
+
+              sessionAttributes.lastSpeechText = speechText;
+              sessionAttributes.lastSpeechTitle = "Your Weather Report";
+              handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
             }
             else{
               appInsightsClient.trackTrace({
@@ -87,7 +93,7 @@ function weatherCommandFn(appInsightsClient, action) {
           return handlerInput.responseBuilder
               .speak(speechText)
               .reprompt(speechText)
-              .withSimpleCard('Your Weather', speechText)
+              .withSimpleCard('Your Weather Report', speechText)
               .getResponse();
         } else{
           return handlerInput.responseBuilder

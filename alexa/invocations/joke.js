@@ -22,11 +22,18 @@ function jokeCommandFn(appInsightsClient) {
       
       let speechText = '';
       let errorText = 'noerror';
+
+      const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
       await fetch(jokesURL, { method: 'GET', headers: myHeaders })
         .then((response) => response.json())
         .then((body) => {
           if(body.status == 200) {
             speechText = `Here's your Joke: ${body.joke}`;
+            
+            sessionAttributes.lastSpeechText = speechText;
+            sessionAttributes.lastSpeechTitle = "Your Joke";
+            handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
           } else {
             appInsightsClient.trackTrace({
               message: "API Error",

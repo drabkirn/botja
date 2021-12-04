@@ -36,6 +36,9 @@ const HelpIntentHandler = helpModule.helpCommand(appInsightsClient);
 let fallbackModule = require("./invocations/defaults/fallback");
 const FallbackIntentHandler = fallbackModule.fallbackCommand(appInsightsClient);
 
+let repeatModule = require("./invocations/defaults/repeat");
+const RepeatIntentHandler = repeatModule.repeatCommand(appInsightsClient);
+
 let cancelModule = require("./invocations/defaults/cancel");
 const CancelAndStopIntentHandler = cancelModule.cancelCommand(appInsightsClient);
 
@@ -61,6 +64,7 @@ exports.handler = skillBuilder
     LaunchRequestHandler,
     HelpIntentHandler,
     FallbackIntentHandler,
+    RepeatIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
   )
