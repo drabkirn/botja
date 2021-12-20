@@ -3,3 +3,6 @@ node_modules/
 # Ignore ENV
 .env
 .env_production
+
+# Service account file
+dialogflow/botja-df69e-7328ae380ea1.json

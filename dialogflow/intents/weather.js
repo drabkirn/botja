@@ -38,9 +38,29 @@ async function weatherCommandFn(agent, appInsightsClient) {
         let apiPopulation = body.city.population;
         
         let apiInfoUpdated = body.list[0].dt_txt;
-        
-        agent.add(
-          "Here's your weather of **" + apiCityName + ", " + apiCountry + "** | **Population:**  " + apiPopulation + "\n" +
+
+        let speechText = "";
+
+        if(agent.originalRequest && agent.originalRequest.payload && agent.originalRequest.payload.channelId === "line") {
+          speechText = "Here's your weather of " + apiCityName + ", " + apiCountry + " | Population:  " + apiPopulation + "\n" +
+          
+          "Description:  " + weatherMain + " | " + weatherDescription + "\n" +
+          
+          "Cloudiness:  " + cloudiness + " %\n" +
+          
+          "Temperature:  " + temperature + " deg celsius\n" +
+          
+          "Atmospheric Pressure:  " + atmPressure + " hPa\n" +
+          
+          "Humidity:  " + humidity + " %\n" +
+          
+          "Wind Speed:  " + windSpeed + " m/s\n" +
+          
+          "Wind Direction:  " + windDirection + " deg\n\n" +
+          
+          "Information last updated:  " + apiInfoUpdated + " IST"
+        } else {
+          speechText = "Here's your weather of **" + apiCityName + ", " + apiCountry + "** | **Population:**  " + apiPopulation + "\n" +
           
           "**Description:**  " + weatherMain + " | " + weatherDescription + "\n" +
           
@@ -57,7 +77,9 @@ async function weatherCommandFn(agent, appInsightsClient) {
           "**Wind Direction:**  " + windDirection + " deg\n\n" +
           
           "**Information last updated:**  " + apiInfoUpdated + " IST"
-        );
+        }
+        
+        agent.add(speechText);
 
         appInsightsClient.trackEvent({name: "botja-dialogflow", properties: { desc: "Weather called", req: "correct", args: cityName }});
       }

@@ -22,6 +22,11 @@ I can tell you quotes, entertain you with jokes, suggest you movies, make calcul
 1. [Discord](https://go.cdadityang.xyz/discord)
 2. [Alexa](https://go.cdadityang.xyz/bjalexa) - *Alexa, ask cool crave to tell me a quote*
 3. [Google Assistant](https://go.cdadityang.xyz/bjga) - *Ok Google, Ask Cool Crave to tell me a quote*
+4. [Telegram](https://go.cdadityang.xyz/bjtg)
+5. [Skype](https://go.cdadityang.xyz/bjskype)
+6. [Slack](https://go.cdadityang.xyz/bjslack)
+7. [Line Messenger](https://go.cdadityang.xyz/bjline)
+8. [GroupMe](https://go.cdadityang.xyz/bjgme)
 
 -----
 -----
